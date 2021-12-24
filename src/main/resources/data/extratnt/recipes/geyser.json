@@ -1,0 +1,22 @@
+{
+  "type" : "crafting_shaped",
+  "pattern" : [
+    "DTD",
+    "TLT",
+    "DTD"
+  ],
+  "key" : {
+    "D" : {
+      "item" : "obsidian"
+    },
+    "T" : {
+      "item" : "extratnt:sparkler"
+    },
+    "L" : {
+      "item" : "lava_bucket"
+    }
+  },
+  "result" : {
+    "item" : "extratnt:geyser"
+  }
+}

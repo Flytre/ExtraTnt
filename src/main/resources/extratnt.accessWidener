@@ -1,0 +1,5 @@
+accessWidener   v1  named
+accessible field net/minecraft/entity/TntEntity FUSE Lnet/minecraft/entity/data/TrackedData;
+accessible field net/minecraft/entity/TntEntity DEFAULT_FUSE I
+accessible field net/minecraft/entity/TntEntity causingEntity Lnet/minecraft/entity/LivingEntity;
+extendable method net/minecraft/entity/TntEntity explode ()V

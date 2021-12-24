@@ -1,0 +1,22 @@
+{
+  "type" : "crafting_shaped",
+  "pattern" : [
+    "DTD",
+    "TWT",
+    "DTD"
+  ],
+  "key" : {
+    "D" : {
+      "item" : "piston"
+    },
+    "T" : {
+      "item" : "tnt"
+    },
+    "W" : {
+      "item" : "extratnt:sparkler"
+    }
+  },
+  "result" : {
+    "item" : "extratnt:fountain"
+  }
+}

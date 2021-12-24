@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "extratnt:block/fountain_top",
+    "bottom": "extratnt:block/fountain_bottom",
+    "side": "extratnt:block/fountain_side"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type" : "crafting_shaped",
+  "pattern" : [
+    "DTD",
+    "TDT",
+    "DTD"
+  ],
+  "key" : {
+    "D" : {
+      "item" : "pink_dye"
+    },
+    "T" : {
+      "item" : "extratnt:sparkler"
+    }
+  },
+  "result" : {
+    "item" : "extratnt:pink"
+  }
+}

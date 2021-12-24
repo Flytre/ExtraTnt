@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "extratnt",
+  "version": "${version}",
+  "name": "Extra TNT",
+  "description": "More TNT!",
+  "authors": [
+    "Flytre"
+  ],
+  "contact": {
+    "homepage": "https://flytre.net/"
+  },
+  "license": "ARR",
+  "icon": "assets/extratnt/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.flytre.extratnt.ExtraTnt"
+    ],
+    "client": [
+      "net.flytre.extratnt.ExtraTntClient"
+    ]
+  },
+  "mixins": [
+    "extratnt.mixins.json"
+  ],
+  "accessWidener": "extratnt.accessWidener",
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "flytre_lib" : ">=1.3.5",
+    "minecraft": "1.17.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
