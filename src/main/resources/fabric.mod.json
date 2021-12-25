@@ -27,10 +27,7 @@
   "accessWidener": "extratnt.accessWidener",
   "depends": {
     "fabricloader": ">=0.7.4",
-    "flytre_lib" : ">=1.3.5",
-    "minecraft": "1.17.x"
-  },
-  "suggests": {
-    "flamingo": "*"
+    "flytre_lib": ">=1.4.4",
+    "minecraft": "1.18.x"
   }
 }

@@ -3,6 +3,7 @@ package net.flytre.extratnt;
 import net.fabricmc.api.ModInitializer;
 import net.flytre.extratnt.tnt.*;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -10,9 +11,12 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+
+import java.nio.channels.Pipe;
 
 public class ExtraTnt implements ModInitializer {
 
@@ -27,7 +31,6 @@ public class ExtraTnt implements ModInitializer {
     public static final EntityType<FountainTntEntity> FOUNTAIN = register(new Identifier("extratnt", "fountain"),FountainTntEntity::new);
     public static final EntityType<GeyserTntEntity> GEYSER = register(new Identifier("extratnt", "geyser"),GeyserTntEntity::new);
     public static final EntityType<UltimateTntEntity> ULTIMATE = register(new Identifier("extratnt", "ultimate"),UltimateTntEntity::new);
-
 
     private static <T extends Entity> EntityType<T> register(Identifier id, EntityType.EntityFactory<T> creator) {
         return Registry.register(
@@ -44,21 +47,15 @@ public class ExtraTnt implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        Registry.register(Registry.BLOCK, new Identifier("extratnt", "sparkler"), SPARKLER_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier("extratnt", "sparkler"), new BlockItem(SPARKLER_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
+        registerBlock(SPARKLER_BLOCK,"sparkler");
+        registerBlock(PINK_BLOCK,"pink");
+        registerBlock(FOUNTAIN_BLOCK,"fountain");
+        registerBlock(GEYSER_BLOCK,"geyser");
+        registerBlock(ULTIMATE_BLOCK,"ultimate");
+    }
 
-        Registry.register(Registry.BLOCK, new Identifier("extratnt", "pink"), PINK_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier("extratnt", "pink"), new BlockItem(PINK_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
-
-        Registry.register(Registry.BLOCK, new Identifier("extratnt", "fountain"), FOUNTAIN_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier("extratnt", "fountain"), new BlockItem(FOUNTAIN_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
-
-        Registry.register(Registry.BLOCK, new Identifier("extratnt", "geyser"), GEYSER_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier("extratnt", "geyser"), new BlockItem(GEYSER_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
-
-
-        Registry.register(Registry.BLOCK, new Identifier("extratnt", "ultimate"), ULTIMATE_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier("extratnt", "ultimate"), new BlockItem(ULTIMATE_BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
-
+    public static <T extends Block> void registerBlock(T block, String id) {
+        Registry.register(Registry.BLOCK, new Identifier("extratnt", id), block);
+        Registry.register(Registry.ITEM, new Identifier("extratnt", id), new BlockItem(block, new Item.Settings().group(ItemGroup.REDSTONE)));
     }
 }
