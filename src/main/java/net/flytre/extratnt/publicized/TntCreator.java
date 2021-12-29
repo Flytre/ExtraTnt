@@ -1,12 +1,11 @@
 package net.flytre.extratnt.publicized;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.TntEntity;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 @FunctionalInterface
 public interface TntCreator {
 
-    TntEntity create(World world, double x, double y, double z, @Nullable LivingEntity igniter);
+    TntEntityPublic create(World world, double x, double y, double z, @Nullable LivingEntity igniter);
 }

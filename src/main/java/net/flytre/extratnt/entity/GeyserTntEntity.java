@@ -1,19 +1,20 @@
-package net.flytre.extratnt.tnt;
+package net.flytre.extratnt.entity;
 
+import net.flytre.extratnt.publicized.TntEntityPublic;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.TntEntity;
+import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.world.World;
 
 
-public class GeyserTntEntity extends TntEntity {
-
+public class GeyserTntEntity extends TntEntityPublic {
 
     private int explodeTime;
     private boolean hasExploded = false;
 
-    public GeyserTntEntity(EntityType<? extends TntEntity> entityType, World world) {
-        super(entityType, world);
+    public GeyserTntEntity(EntityType<? extends TntEntityPublic> entityEntityType, World world) {
+        super(entityEntityType,world);
     }
+
 
 
     @Override
@@ -28,14 +29,14 @@ public class GeyserTntEntity extends TntEntity {
             this.setInvulnerable(true);
 
             double theta = Math.random() * 2 * Math.PI;
-            double radius = Math.random() * 0.5 + 0.3;
+            double radius = Math.random()*0.5 + 0.3;
             double x = Math.cos(theta) * radius;
-            double y = 0.5 + radius / 0.3;
+            double y = 0.5 + radius/0.3;
             double z = Math.sin(theta) * radius;
-            TntEntity tntEntity = new TntEntity(world, getX(), getY(), getZ(), this.getCausingEntity());
-            tntEntity.setVelocity(x, y, z);
+            TNTEntity tntEntity = new TNTEntity(world,getPosX(),getPosY(),getPosZ(),this.getCausingEntity());
+            tntEntity.setVelocity(x,y,z);
             tntEntity.setFuse(140);
-            world.spawnEntity(tntEntity);
+            world.addEntity(tntEntity);
 
             explodeTime--;
             if (explodeTime == 1 && !hasExploded)

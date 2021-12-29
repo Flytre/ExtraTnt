@@ -1,17 +1,18 @@
-package net.flytre.extratnt.tnt;
+package net.flytre.extratnt.entity;
 
+import net.flytre.extratnt.publicized.TntEntityPublic;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.TntEntity;
+import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.world.World;
 
 
-public class SparklerTntEntity extends TntEntity {
+public class SparklerTntEntity extends TntEntityPublic {
 
     private int explodeTime;
     private boolean hasExploded = false;
 
-    public SparklerTntEntity(EntityType<? extends TntEntity> entityType, World world) {
-        super(entityType,world);
+    public SparklerTntEntity(EntityType<? extends TntEntityPublic> entityEntityType, World world) {
+        super(entityEntityType,world);
     }
 
 
@@ -30,10 +31,10 @@ public class SparklerTntEntity extends TntEntity {
             double x = Math.cos(theta) * radius;
             double y = 0.5 + radius/0.3;
             double z = Math.sin(theta) * radius;
-            TntEntity tntEntity = new TntEntity(world,getX(),getY(),getZ(),this.getCausingEntity());
+            TNTEntity tntEntity = new TNTEntity(world,getPosX(),getPosY(),getPosZ(),this.getCausingEntity());
             tntEntity.setVelocity(x,y,z);
             tntEntity.setFuse(180);
-            world.spawnEntity(tntEntity);
+            world.addEntity(tntEntity);
             explodeTime--;
 
         }
