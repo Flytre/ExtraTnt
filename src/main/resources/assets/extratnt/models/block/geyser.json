@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "top": "extratnt:block/geyser_top",
-    "bottom": "extratnt:block/geyser_bottom",
-    "side": "extratnt:block/geyser_side"
-  }
-}
