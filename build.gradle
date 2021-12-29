@@ -1,12 +1,3 @@
-// TODO remove buildscript block
-buildscript {
-
-    repositories {
-    
-        mavenCentral()
-    }
-}
-
 apply from: 'gradle/property_loader.gradle'
 apply from: 'gradle/git_changelog.gradle'
 
@@ -14,14 +5,23 @@ version = mod_version
 
 subprojects {
 
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath 'com.guardsquare:proguard-gradle:7.2.0-beta5'
+        }
+    }
+
     apply plugin: 'maven-publish'
-    
+
     apply from: '../gradle/property_loader.gradle'
     apply from: '../gradle/java.gradle'
     apply from: '../gradle/git_changelog.gradle'
     apply from: '../gradle/minify_jsons.gradle'
     apply from: '../gradle/signing.gradle'
-    
+
     // Disables Gradle's custom module metadata from being published to maven. The 
     // metadata includes mapped dependencies which are not reasonably consumable by
     // other mod developers.

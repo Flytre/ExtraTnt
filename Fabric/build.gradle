@@ -1,3 +1,5 @@
+import net.fabricmc.loom.task.RemapJarTask
+
 plugins {
     id 'fabric-loom' version '0.10-SNAPSHOT'
     id 'net.darkhax.curseforgegradle' version '1.0.7'
@@ -23,8 +25,6 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-    include fabricApi.module("fabric-resource-loader-v0", fabric_version)
-
 
 //    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${rei_version}"
     modRuntime "me.shedaniel:RoughlyEnoughItems-fabric:${rei_version}"
@@ -41,7 +41,6 @@ dependencies {
 moduleDependencies(project, [
         "Common"
 ])
-
 
 
 loom {
@@ -133,13 +132,14 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
 
     apiToken = auth.getProperty("curseforge_token")
 
-    def mainFile = upload(curse_project, file("${project.buildDir}/libs/${archivesBaseName}-${mod_version}.jar"))
+    def mainFile = upload(curse_project, file("${project.buildDir}/libs/${archivesBaseName}.jar"))
     mainFile.changelogType = 'markdown'
     mainFile.changelog = project.ext.mod_changelog
     mainFile.addJavaVersion('Java 17')
     mainFile.addJavaVersion('Java 18')
     mainFile.releaseType = "release"
     mainFile.addModLoader('Fabric')
+    mainFile.addRelation("lib", "requiredDependency")
 
     def versions = supported_versions.split(",")
     versions.each(v -> {
@@ -153,4 +153,33 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
             project.ext.curse_file_url = "${mod_homepage}/files/${mainFile.curseFileId}"
         }
     }
+}
+
+task obfuscate(type: proguard.gradle.ProGuardTask) {
+    outputs.upToDateWhen { false }
+    doFirst {
+        injars("build/libs/${archivesBaseName}-dev.jar")
+        outjars("build/libs/${archivesBaseName}-dev-obfus.jar")
+
+        configurations.runtimeClasspath.each {
+            libraryjars(it.path + "")
+        }
+
+        configuration("../proguard/proguard.cfg")
+        repackageclasses("net.flytre.${mod_id}")
+    }
+}
+
+task remap(type: RemapJarTask) {
+    input = file("build/libs/${archivesBaseName}-dev-obfus.jar")
+    addNestedDependencies = false
+    remapAccessWidener = true;
+}
+
+task buildObfuscated {
+    dependsOn 'build'
+    dependsOn 'obfuscate'
+    dependsOn 'remap'
+    tasks.findByName('obfuscate').mustRunAfter 'build'
+    tasks.findByName('remap').mustRunAfter 'obfuscate'
 }
