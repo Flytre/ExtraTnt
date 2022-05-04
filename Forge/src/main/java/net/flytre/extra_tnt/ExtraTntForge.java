@@ -1,12 +1,9 @@
 package net.flytre.extra_tnt;
 
 
-import net.flytre.flytre_lib.loader.LoaderProperties;
+import net.flytre.flytre_lib.loader.LoaderCore;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @Mod(Constants.MOD_ID)
@@ -14,17 +11,9 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 public class ExtraTntForge {
 
     public ExtraTntForge() {
+        LoaderCore.registerForgeMod(Constants.MOD_ID, Registry::init);
         if (FMLEnvironment.dist == Dist.CLIENT) {
             ClientRegistry.init();
         }
-    }
-
-    @SubscribeEvent
-    public static void onLoadComplete(FMLLoadCompleteEvent event) {
-    }
-
-    @SubscribeEvent
-    public void preInit(FMLCommonSetupEvent event) {
-
     }
 }

@@ -18,7 +18,7 @@ public class SparklerTntEntity extends TntEntity {
     }
 
     public SparklerTntEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter) {
-        this(Registry.SPARKLER_ENTITY, world);
+        this(Registry.SPARKLER_ENTITY.get(), world);
         this.setPosition(x, y, z);
         double d = world.random.nextDouble() * Math.PI * 2;
         this.setVelocity(-Math.sin(d) * 0.02D, 0.2D, -Math.cos(d) * 0.02D);

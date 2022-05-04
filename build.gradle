@@ -32,7 +32,7 @@ subprojects {
 
     repositories {
 
-        mavenCentral()
+        mavenLocal()
 
         maven {
             name = 'Sponge / Mixin'
@@ -42,6 +42,11 @@ subprojects {
         maven {
             name = 'Jitpack'
             url = 'https://www.jitpack.io'
+        }
+
+        maven {
+            name = 'Shedaniel'
+            url = "https://maven.shedaniel.me/"
         }
     }
 
