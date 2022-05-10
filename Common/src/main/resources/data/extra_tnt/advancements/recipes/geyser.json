@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "extra_tnt:geyser"
+    ]
+  },
+  "criteria": {
+    "has_sparkler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extra_tnt:sparkler"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "extra_tnt:geyser"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sparkler",
+      "has_the_recipe"
+    ]
+  ]
+}

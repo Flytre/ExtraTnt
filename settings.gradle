@@ -15,5 +15,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Extra TNT 1.18"
+rootProject.name = "Extra TNT"
 include('Common', 'Fabric', 'Forge')

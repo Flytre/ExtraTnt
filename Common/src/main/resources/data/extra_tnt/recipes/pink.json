@@ -1,0 +1,19 @@
+{
+  "type" : "crafting_shaped",
+  "pattern" : [
+    "DTD",
+    "TDT",
+    "DTD"
+  ],
+  "key" : {
+    "D" : {
+      "item" : "minecraft:pink_dye"
+    },
+    "T" : {
+      "item" : "extra_tnt:sparkler"
+    }
+  },
+  "result" : {
+    "item" : "extra_tnt:pink"
+  }
+}

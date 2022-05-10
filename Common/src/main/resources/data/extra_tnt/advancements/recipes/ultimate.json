@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "extra_tnt:ultimate"
+    ]
+  },
+  "criteria": {
+    "has_geyser": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extra_tnt:geyser"
+            ]
+          }
+        ]
+      }
+    },
+    "has_pink": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extra_tnt:pink"
+            ]
+          }
+        ]
+      }
+    },
+    "has_fountain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extra_tnt:fountain"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "extra_tnt:ultimate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_geyser",
+      "has_fountain",
+      "has_pink",
+      "has_the_recipe"
+    ]
+  ]
+}

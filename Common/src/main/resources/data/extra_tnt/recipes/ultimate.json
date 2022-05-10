@@ -1,0 +1,22 @@
+{
+  "type" : "crafting_shaped",
+  "pattern" : [
+    "GFG",
+    "FPF",
+    "GFG"
+  ],
+  "key" : {
+    "G" : {
+      "item" : "extra_tnt:geyser"
+    },
+    "F" : {
+      "item" : "extra_tnt:fountain"
+    },
+    "P" : {
+      "item" : "extra_tnt:pink"
+    }
+  },
+  "result" : {
+    "item" : "extra_tnt:ultimate"
+  }
+}
